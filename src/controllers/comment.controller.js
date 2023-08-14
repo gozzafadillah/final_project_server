@@ -1,6 +1,7 @@
 const CommentBusiness = require("../business/comment.business");
 const UserBusiness = require("../business/user.business");
 const VideoBusiness = require("../business/video.business");
+const ConfigPusher = require("../config/pusher.config");
 const { verifyToken } = require("../utlis/jwt.util");
 
 class CommentController {
@@ -17,6 +18,7 @@ class CommentController {
       const { body: comment } = req;
       const { authorization } = req.headers;
       const token = authorization.split(" ")[1];
+      const pusher = ConfigPusher();
       // check token
       const jwt = verifyToken(token);
       // check user
@@ -35,6 +37,9 @@ class CommentController {
       comment.videoId = videoId;
       // create comment
       const createdComment = await this.commentBusiness.createComment(comment);
+      pusher.trigger("comments", "new-comment", {
+        comment: createdComment,
+      });
       const response = {
         message: "success created comment",
       };
