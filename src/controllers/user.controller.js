@@ -19,11 +19,11 @@ class UserController {
   async createUser(req, res) {
     try {
       const { body: user } = req;
-      const createdUser = await this.userBusiness.createUser(user);
+      await this.userBusiness.createUser(user);
       const response = {
         message: "User created successfully",
       };
-      res.status(201).json(createdUser);
+      res.status(201).json(response);
     } catch (error) {
       res.status(400).json({ error: error.message });
     }
