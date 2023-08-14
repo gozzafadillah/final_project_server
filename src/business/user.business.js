@@ -45,6 +45,15 @@ class UserBusiness {
     }
   }
 
+  async profile(id) {
+    try {
+      const user = await this.userRepository.getUserById(id);
+      return user;
+    } catch (error) {
+      throw error;
+    }
+  }
+
   async login(user) {
     try {
       const userFound = await this.userRepository.getuserByEmail(user.email);

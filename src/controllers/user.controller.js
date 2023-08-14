@@ -1,4 +1,5 @@
 const UserBusiness = require("../business/user.business");
+const { verifyToken } = require("../utlis/jwt.util");
 
 class UserController {
   constructor() {
@@ -26,6 +27,26 @@ class UserController {
       res.status(201).json(response);
     } catch (error) {
       res.status(400).json({ error: error.message });
+    }
+  }
+
+  async profile(req, res) {
+    try {
+      // get token from authorization header
+      const { authorization } = req.headers;
+      const token = authorization.split(" ")[1];
+      // check token
+      const jwt = verifyToken(token);
+      // check user
+      const id = jwt.userId;
+      const { email, username, _id, img } = await this.userBusiness.profile(id);
+      const response = {
+        message: "Get user successfully",
+        user: { email, username, _id, img },
+      };
+      res.status(200).json(response);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
   }
 

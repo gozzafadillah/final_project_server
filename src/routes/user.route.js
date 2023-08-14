@@ -7,6 +7,7 @@ function SetupUserRoutes() {
 
   router.post("/signup", userController.createUser.bind(userController));
   router.post("/signin", userController.login.bind(userController));
+  router.get("/profile", userController.profile.bind(userController));
 
   return router;
 }
