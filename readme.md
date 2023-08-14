@@ -37,7 +37,8 @@ urlImageThumbnail: string
 }
 ```
 
-- **_GET /videos_**
+- ## GET /videos
+
   Retrieves all videos in the system.
 
   - **_URL Params_**
@@ -87,7 +88,8 @@ urlImageThumbnail: string
     }
     ```
 
-- **_POST /videos_**
+- ### POST /videos
+
   Creates a new video in the system.
 
   - **_URL Params_**
@@ -130,20 +132,22 @@ urlImageThumbnail: string
 
 ```yaml
 {
-username: string
-email: string
-password: string
+  username: string
+  email: string
+  password: string
+  img: string
 }
 ```
 
-- **_POST /signup_**
+- ### POST /signup
+
   Creates a new user account.
 
   - **_URL Params_**
     None
   - **_Data Params_**
     ```yml
-    { "email": string, "username": string, "password": string }
+    { "email": string, "username": string, "password": string, "img": string }
     ```
   - **_Headers_**
   - **_Content-Type: application/json_**
@@ -159,7 +163,8 @@ password: string
   - **_Code: 400_**
   - **_Content:_** { "error": "E11000 duplicate key error collection: tokopedia_play.users index: email_1 dup key: { email: \"gozzafadillah@gmail.com\" }" }
 
-- **POST /signin**
+- ### POST /signin
+
   Signs in a user.
 
   - **_URL Params_**
@@ -186,6 +191,44 @@ password: string
   - **_Code:_** 401
   - **_Content:_** { "error": "Invalid credentials" }
 
+- ### GET /signin
+
+  Get Profile User By Token
+
+  - **_URL Params_**
+    None
+  - **_Data Params_**
+    `yml
+        {
+"email": string,
+"password": string
+}
+`
+
+  - **_Headers_**
+
+    - **_Content-Type:_** application/json
+    - **_Authorization:_** Bearer
+    - **_Success Response:_**
+    - **_Code:_** 200
+    - **_Content:_**
+
+    ```yml
+    {
+      "message": "Get user successfully",
+      "user": {
+          "email": "gozzafadillah@gmail.com",
+          "username": "gozza",
+          "_id": "64c283dd3df7a34c1f0cb3bb",
+          "img": "https://images.unsplash.com/photo-1493666438817-866a91353ca9?ixlib=rb-0.3.5&q=80&fm=jpg&crop=faces&fit=crop&h=200&w=200&s=b616b2c5b373a80ffc9636ba24f7a4a9"
+    }
+
+    ```
+
+  - **_Error Response:_**
+  - **_Code:_** 401
+  - **_Content:_** { "error": "Invalid credentials" }
+
 ## Comments
 
 Comment object
@@ -201,7 +244,8 @@ Comment object
 
 ## Comments
 
-- **_POST /comments_**
+- ### POST /comments
+
   Creates a new comment on a video.
 
       - **_URL Params_**
@@ -223,7 +267,8 @@ Comment object
   { message: "Comment created successfully" }
   ```
 
-- **GET /comments/:videoId**
+- ### GET /comments/:videoId
+
   Retrieves all comments in the system.
 
   - **_URL Params_**
@@ -254,7 +299,8 @@ Comment object
 
 ## Product
 
-- **POST /product/:videoId**
+- ### POST /product/:videoId
+
   Creates a new product related to a specific video.
 
   - **_URL Params_**
