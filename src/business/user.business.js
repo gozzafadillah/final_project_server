@@ -37,7 +37,7 @@ class UserBusiness {
   async createUser(user) {
     try {
       const salt = await bcrypt.genSalt(Number(process.env.SALT));
-      user.password = await bcrypt.hash(req.body.password, salt);
+      user.password = await bcrypt.hash(user.password, salt);
       const newUser = await this.userRepository.store(user);
       return newUser;
     } catch (error) {
