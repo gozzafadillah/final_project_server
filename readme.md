@@ -9,6 +9,10 @@ Pada midterm ini saya membuat restapi dengan integrasi mongoDB untuk databasenya
 - [x] nodemon
 - [x] dotenv
 
+## Deployment api
+
+untuk demo bisa di cek di link berikut [https://finalprojectserver-production-6bdc.up.railway.app/](https://finalprojectserver-production-6bdc.up.railway.app/)
+
 ## How to run app
 
 1. `npm install ` or `npm ci`
