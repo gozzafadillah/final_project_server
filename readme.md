@@ -13,6 +13,10 @@ Pada midterm ini saya membuat restapi dengan integrasi mongoDB untuk databasenya
 
 untuk demo bisa di cek di link berikut [https://finalprojectserver-production-6bdc.up.railway.app/](https://finalprojectserver-production-6bdc.up.railway.app/)
 
+## Image docker hub
+
+untuk docker hub bisa di cek di link berikut [https://hub.docker.com/repository/docker/gozzafadillah/final_project_server/general](https://hub.docker.com/repository/docker/gozzafadillah/final_project_server/general)
+
 ## How to run app
 
 1. `npm install ` or `npm ci`
